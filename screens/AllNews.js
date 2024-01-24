@@ -1,6 +1,10 @@
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 function AllNews() {
-    return <View></View>
+  return (
+    <View>
+      <Text>ASD</Text>
+    </View>
+  );
 }
 export default AllNews;
