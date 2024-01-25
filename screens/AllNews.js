@@ -1,49 +1,9 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import NewsFlatListItem from "../Components/NewsFlatListItem";
+import dummy_data from "../data/dummy_data";
 
-const dummy_data = [
-  {
-    id: 1,
-    title: "News1",
-    content: "Lorem Ipsum",
-    image: 'https://picsum.photos/200/300'
-  },
-  {
-    id: 2,
-    title: "News2",
-    content: "Lorem Ipsum",
-    image: 'https://picsum.photos/200/300'
-  },
-  {
-    id: 3,
-    title: "News3",
-    content: "Lorem Ipsum",
-    image: 'https://picsum.photos/200/300'
-  },
-  {
-    id: 4,
-    title: "News4",
-    content: "Lorem Ipsum",
-    image: 'https://picsum.photos/200/300'
-  }, {
-    id: 5,
-    title: "News5",
-    content: "Lorem Ipsum",
-    image: 'https://picsum.photos/200/300'
-  },
-  {
-    id: 6,
-    title: "News6",
-    content: "Lorem Ipsum",
-    image: 'https://picsum.photos/200/300'
-  },
-];
-
-function renderItem(item) {
-  return (
-    <View>
-      <Text>{item.item.content}</Text>
-    </View>
-  );
+function renderItem(itemData) {
+  return <NewsFlatListItem {...itemData.item} />;
 }
 
 function AllNews() {
@@ -53,9 +13,15 @@ function AllNews() {
         data={dummy_data}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        numColumns={2}
       />
     </View>
   );
 }
 export default AllNews;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FDF0D1",
+  },
+});

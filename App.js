@@ -1,20 +1,23 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AllNews from "./screens/AllNews";
+import NewsDetail from "./screens/NewsDetail";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Categories from "./screens/Categories";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "#85586F" },
+      }}
+    >
       <Tab.Screen
         name="Categories"
         component={Categories}
@@ -30,10 +33,10 @@ function MyTabs() {
         name="AllNews"
         component={AllNews}
         options={{
-          headerTitle: "AllNews",
-          tabBarLabel: "AllNews",
+          headerTitle: "News",
+          tabBarLabel: "All News",
           tabBarIcon: ({ color, size }) => {
-            return <MaterialIcons name="newspaper" color={color} size={size} />
+            return <MaterialIcons name="newspaper" color={color} size={size} />;
           },
         }}
       />
@@ -44,9 +47,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{
-          backgroundColor: 'transparent'
-      }}>
+      <Stack.Navigator>
         <Stack.Screen
           name="Overview"
           component={MyTabs}
@@ -55,15 +56,11 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="Categories"
-          component={Categories}
-          options={{ title: "Categories" }}
-        />
-
-        <Stack.Screen
-          name="News"
-          component={AllNews}
-          options={{ title: "News" }}
+          name="NewsDetail"
+          component={NewsDetail}
+          options={{ title: "News Detail",
+          headerStyle: { backgroundColor: '#85586F' },
+        }}
         />
       </Stack.Navigator>
     </NavigationContainer>
