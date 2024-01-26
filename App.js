@@ -7,7 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Categories from "./screens/Categories";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -46,24 +47,27 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Overview"
-          component={MyTabs}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="NewsDetail"
-          component={NewsDetail}
-          options={{ title: "News Detail",
-          headerStyle: { backgroundColor: '#85586F' },
-        }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Overview"
+            component={MyTabs}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="NewsDetail"
+            component={NewsDetail}
+            options={{
+              title: "News Detail",
+              headerStyle: { backgroundColor: "#85586F" },
+            }}s
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
