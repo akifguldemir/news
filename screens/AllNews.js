@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllNews } from "../store/newsSlice";
 
 function renderItem(itemData) {
+  console.log(itemData.item.key)
   return <NewsFlatListItem {...itemData.item} />;
 }
 
@@ -23,7 +24,7 @@ function AllNews() {
     <View>
       <FlatList
         data={news}
-        keyExtractor={(item) => item.key}
+        keyExtractor={(item) => item.index}
         renderItem={renderItem}
       />
     </View>
