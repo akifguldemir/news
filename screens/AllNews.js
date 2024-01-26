@@ -1,22 +1,29 @@
 import { View, FlatList, StyleSheet } from "react-native";
+import { useEffect } from "react";
 import NewsFlatListItem from "../Components/NewsFlatListItem";
 import dummy_data from "../data/dummy_data";
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllNews } from "../store/newsSlice";
 
 function renderItem(itemData) {
   return <NewsFlatListItem {...itemData.item} />;
 }
 
-function fetchNews() {
-  return;
-}
-
-fetchNews();
 function AllNews() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllNews());
+  }, [dispatch]);
+
+  const news = useSelector((state) => state.news.news);
+
   return (
     <View>
       <FlatList
-        data={dummy_data}
-        keyExtractor={(item) => item.id}
+        data={news}
+        keyExtractor={(item) => item.key}
         renderItem={renderItem}
       />
     </View>

@@ -7,3 +7,5 @@ class NewsService extends BaseService {
         return this.get(GENERAL_NEWS_ENDPOINT)
     }
 }
+
+export default new NewsService()

@@ -1,12 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { useLayoutEffect } from "react";
-import dummy_data from "../data/dummy_data";
 
 function NewsDetail({ route, navigation }) {
-  newsId = route.params?.newsId
-
-  news = dummy_data.filter((item) => item.id === newsId)
-  console.log(news)
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -16,7 +11,10 @@ function NewsDetail({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>Detail {newsId}</Text>
+      <Text>{route.params?.source}</Text>
+      <Text>{route.params?.description}</Text>
+      <Image source={{ uri: route.params?.image }} style={styles.image} />
+      <Text>{route.params?.date}</Text>
     </View>
   );
 }
@@ -25,5 +23,11 @@ export default NewsDetail;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  image: {
+    width: 120,
+    height: 120,
+    borderRadius: 4,
+    marginRight: 10,
   },
 });

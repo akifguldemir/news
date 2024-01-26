@@ -1,22 +1,28 @@
 import { Pressable, View, Text, Image, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-
-function NewsFlatListItem({ id, title, image }) {
-const navigation = useNavigation();
-
-  function goToDetail () {
-    navigation.navigate('NewsDetail', {
-      newsId: id
-    })
+function NewsFlatListItem({ key, name, image, url, description, source }) {
+  const navigation = useNavigation();
+  function goToDetail() {
+    navigation.navigate("NewsDetail", {
+      key: key,
+      name: name,
+      image: image,
+      url: url,
+      description: description,
+      source: source,
+    });
   }
 
   return (
-    <Pressable onPress={goToDetail} style={({ pressed }) => pressed && styles.pressed}> 
+    <Pressable
+      onPress={goToDetail}
+      style={({ pressed }) => pressed && styles.pressed}
+    >
       <View style={styles.card}>
         <Image source={{ uri: image }} style={styles.image} />
         <View style={styles.textContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.title}>{name}</Text>
         </View>
       </View>
     </Pressable>
@@ -51,6 +57,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   pressed: {
-    opacity: 0.75
-  }
+    opacity: 0.75,
+  },
 });
