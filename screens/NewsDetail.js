@@ -15,7 +15,6 @@ function NewsDetail({ route, navigation }) {
     date.getMonth() + 1
   }-${date.getFullYear()}`;
 
-  console.log(formattedDate);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -31,7 +30,7 @@ function NewsDetail({ route, navigation }) {
     <View style={styles.container}>
       <Text style={styles.name}>{route.params?.name}</Text>
       <Text style={styles.description}>{route.params?.description}</Text>
-      <TouchableOpacity onPress={openBrowser(route.params?.url)}>
+      <TouchableOpacity onPress={() => openBrowser(route.params?.url)}>
         <Text style={styles.url}>Haberin devamı için tıklayınız.</Text>
       </TouchableOpacity>
       <Image source={{ uri: route.params?.image }} style={styles.image} />

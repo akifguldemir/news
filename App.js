@@ -19,7 +19,7 @@ function MyTabs() {
         headerStyle: { backgroundColor: "#85586F" },
       }}
     >
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Categories"
         component={Categories}
         options={{
@@ -29,7 +29,7 @@ function MyTabs() {
             return <MaterialIcons name="category" color={color} size={size} />;
           },
         }}
-      />
+      /> */}
       <Tab.Screen
         name="AllNews"
         component={AllNews}
