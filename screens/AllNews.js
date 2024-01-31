@@ -25,7 +25,7 @@ function AllNews() {
       {!isLoading && news.length > 0 && (
         <FlatList
           data={news}
-          keyExtractor={(item) => item.index}
+          keyExtractor={(item) => item.key}
           renderItem={renderItem}
         />
       )}

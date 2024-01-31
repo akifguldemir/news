@@ -1,11 +1,10 @@
 import { Pressable, View, Text, Image, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-function NewsFlatListItem({ key, date, name, image, url, description, source }) {
+function NewsFlatListItem({ date, name, image, url, description, source }) {
   const navigation = useNavigation();
   function goToDetail() {
     navigation.navigate("NewsDetail", {
-      key: key,
       name: name,
       image: image,
       url: url,
