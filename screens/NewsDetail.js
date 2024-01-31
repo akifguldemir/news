@@ -7,18 +7,17 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useLayoutEffect } from "react";
+import { formattedDate } from "../utils/formattedDate";
 
 function NewsDetail({ route, navigation }) {
   const date = new Date(route.params?.date);
 
-  const formattedDate = `${date.getDate()}-${
-    date.getMonth() + 1
-  }-${date.getFullYear()}`;
+  const publishDate = formattedDate(date);
 
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: "Detail Page",
+      title: route.params?.name,
     });
   }, [navigation]);
 
@@ -36,7 +35,7 @@ function NewsDetail({ route, navigation }) {
       <Image source={{ uri: route.params?.image }} style={styles.image} />
       <View style={styles.sourceGroup}>
         <Text style={styles.source}>Kaynak: {route.params?.source}</Text>
-        <Text>{formattedDate}</Text>
+        <Text>{publishDate}</Text>
       </View>
     </View>
   );
